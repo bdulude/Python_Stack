@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .color1 {
+            background-color: {{ color1 }};
+        }
+        .color0 {
+            background-color: {{ color0 }};
+        }
+    </style>
+
+    <title>Checkerboard</title>
+</head>
+<body>
+    <h1>Checkerboard</h1>
+    {% for vert in range(y) %}
+        <div class="col">
+            {% for horz in range(x) %}
+                <div class="color{{ (horz + vert) % 2 }}"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
