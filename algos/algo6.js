@@ -1,7 +1,7 @@
 /* 
-  Given a string containing space separated words
-  Reverse each word in the string.
-  If you need to, use .split to start, then try to do it without.
+Given a string containing space separated words
+Reverse each word in the string.
+If you need to, use .split to start, then try to do it without.
 */
 
 const str1 = "hello";
@@ -21,7 +21,7 @@ const expected3 = "cba fed ihg";
  * @param {string} str Contains space separated words.
  * @returns {string} The given string with each word's letters reversed.
  */
- function reverser(word) {
+function reverser(word) {
     return word.split('').reverse().join('');
 }
 
@@ -41,9 +41,9 @@ function reverseWords(str) {
 // *****************************************************
 
 /* 
-  Reverse Word Order
-  Given a string of words (with spaces)
-  return a new string with words in reverse sequence.
+Reverse Word Order
+Given a string of words (with spaces)
+return a new string with words in reverse sequence.
 */
 
 const two_str1 = "This is a test";
@@ -58,7 +58,7 @@ const two_expected1 = "test a is This";
  * @returns {string} The given string with the word order reversed but the words
  *    themselves are not reversed.
  */
- function reverseWordOrder(wordsStr) {
+function reverseWordOrder(wordsStr) {
     let output = "";
     let wordsArr = wordsStr.split(" ");
     for (let i = wordsArr.length-1; i >= 0; i--) {
@@ -74,9 +74,9 @@ const two_expected1 = "test a is This";
 // ********************************************************
 
 /* 
-  Given a string,
-  return a new string with the duplicates excluded
-  Bonus: Keep only the last instance of each character.
+Given a string,
+return a new string with the duplicates excluded
+Bonus: Keep only the last instance of each character.
 */
 
 const three_str1 = "abcABC";
@@ -96,12 +96,11 @@ const three_expected3 = "heol ";
  * @param {string} str A string that may contain duplicates.
  * @returns {string} The given string with any duplicate characters removed.
  */
- function stringDedupe(str) {
+function stringDedupe(str) {
     let output = "";
     let obj = {};
     for (let i = str.length-1; i >= 0; i--) {
         if (!obj.hasOwnProperty(str[i])) {
-            // output += str[i] 
             output= str[i] + output;
             obj[str[i]] = 1;
         }
