@@ -23,9 +23,34 @@ def add():
         "eml" : request.form["eml"]
     }
     # We pass the data dictionary into the save method from the User class.
-    User.save(data)
+    # User.save(data) returns the row id (user id)
+    id = User.save(data)
     # Don't forget to redirect after saving to the database.
-    return redirect('/')
+    return redirect('/user/show/' + str(id))
+
+@app.route("/user/show/<int:id>")
+def show(id):
+    user = User.get_one({'id' : id})
+    return render_template("show.html", user = user)
+
+@app.route("/user/edit/<int:id>")
+def edit(id):
+    user = User.get_one({'id' : id})
+    return render_template("edit.html", user = user)
+
+@app.route("/user/update/<int:id>", methods=["POST"])
+def update(id):
+    data = {
+        **request.form,
+        'id' : id
+    }
+    User.update(data)
+    return redirect("/user/show/" + str(id))
+
+@app.route("/user/delete/<int:id>")
+def delete(id):
+    User.delete({'id' : id})
+    return redirect("/")
 
 
 if __name__ == "__main__":
