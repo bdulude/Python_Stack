@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <label for="eml">Email: </label>
+        <input type="text" name="eml">
+        <label for="pwd_login">Password: </label>
+        <input type="password" name="pwd" id="pwd_login">
+        <input type="submit" value="Login">
+        {% for message in get_flashed_messages(category_filter="err_login") %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </form>
+
+    <h1>Registration</h1>
+    <form action="/register" method="POST">
+        <label for="fname">First Name: </label>
+        <input type="text" name="fname">
+        {% for message in get_flashed_messages(category_filter="err_first_name") %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <label for="lname">Last Name: </label>
+        <input type="text" name="lname">
+        {% for message in get_flashed_messages(category_filter="err_last_name") %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <label for="eml">Email: </label>
+        <input type="text" name="eml">
+        {% for message in get_flashed_messages(category_filter="err_email") %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <label for="pwd">Password: </label>
+        <input type="password" name="pwd">
+        <label for="pwd">Confirm Password: </label>
+        <input type="password" name="pwd_conf">
+        {% for message in get_flashed_messages(category_filter="err_password") %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
